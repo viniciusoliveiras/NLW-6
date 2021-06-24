@@ -1,24 +1,8 @@
 #page-room {
-  header {
-    padding: 1.5rem;
-    border-bottom: 1px solid #ededed;
-
-    .content {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      > img {
-        max-height: 2.8rem;
-      }
-    }
-  }
-
   main {
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: 1rem;
 
     .room-title {
       margin: 2rem 0 1.5rem;
@@ -92,6 +76,10 @@
           }
         }
       }
+    }
+
+    .question-list {
+      margin-top: 2rem;
     }
   }
 }

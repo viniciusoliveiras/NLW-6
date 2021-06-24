@@ -3,24 +3,24 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   height: 3.125rem;
-
   padding: 0 2rem;
-
   background: #835afd;
-
   border-radius: 0.5rem;
   border: 0;
-
   color: #fff;
   font-weight: 500;
-
   cursor: pointer;
-
   transition: filter 0.2s;
+
   img {
     margin-right: 0.5rem;
+  }
+
+  &.outlined {
+    background: #fff;
+    border: 1px solid #835afd;
+    color: #835afd;
   }
 
   &:not(:disabled):hover {

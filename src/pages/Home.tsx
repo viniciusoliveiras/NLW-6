@@ -40,6 +40,11 @@ export function Home() {
       return;
     }
 
+    if (roomRef.val().endedAt) {
+      alert('Esta sala está encerrada');
+      return;
+    }
+
     history.push(`/rooms/${roomCode}`);
   }
 
@@ -80,7 +85,4 @@ export function Home() {
       </main>
     </div>
   );
-}
-function signInWithGoogle(signInWithGoogle: any) {
-  throw new Error('Function not implemented.');
 }
