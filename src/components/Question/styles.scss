@@ -75,6 +75,14 @@
         }
       }
 
+      &.delete-button {
+        &:hover:not(:disabled) {
+          svg path {
+            stroke: #e73f5d;
+          }
+        }
+      }
+
       &.answered,
       &.highlighted {
         svg path,
@@ -83,8 +91,11 @@
         }
       }
 
-      &:hover {
-        filter: brightness(0.7);
+      &:hover:not(:disabled) {
+        svg path,
+        svg circle {
+          stroke: #835afd;
+        }
       }
 
       &:disabled {
