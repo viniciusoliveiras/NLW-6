@@ -3,6 +3,7 @@
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 1rem;
+    padding: 0 2%;
 
     .room-title {
       margin: 2rem 0 1.5rem;
@@ -22,6 +23,13 @@
         padding: 0.5rem 1rem;
         font-weight: 500;
         font-size: 0.815rem;
+      }
+
+      @media (max-width: 380px) {
+        h1,
+        span {
+          text-align: center;
+        }
       }
     }
 
@@ -109,6 +117,20 @@
         color: #737380;
         width: 17.75rem;
         text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    main {
+      margin: 0 5% 7% 5%;
+      padding: 0;
+
+      .empty-questions {
+        margin: 3rem 0;
+        &.admin {
+          margin: 3rem 0;
+        }
       }
     }
   }
