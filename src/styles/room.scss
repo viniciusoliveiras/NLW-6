@@ -81,5 +81,35 @@
     .question-list {
       margin-top: 2rem;
     }
+
+    .empty-questions {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &.admin {
+        margin-top: 10.25rem;
+      }
+
+      h2 {
+        margin-top: 1rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.125rem;
+        line-height: 1.688rem;
+        color: #29292e;
+      }
+
+      p {
+        margin-top: 0.5rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.875rem;
+        line-height: 1.313rem;
+        color: #737380;
+        width: 17.75rem;
+        text-align: center;
+      }
+    }
   }
 }

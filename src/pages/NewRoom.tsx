@@ -26,7 +26,7 @@ export function NewRoom() {
       title: newRoom,
       authorId: user?.id,
     });
-    history.push(`/rooms/${key}`);
+    history.push(`/admin/rooms/${key}`);
   }
 
   return (

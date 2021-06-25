@@ -6,8 +6,9 @@ import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
-import '../styles/room.scss';
 import { RoomHeader } from '../components/RoomHeader';
+import emptyQuestionsImg from '../assets/images/empty-questions.svg';
+import '../styles/room.scss';
 
 type RoomParams = {
   id: string;
@@ -105,12 +106,15 @@ export function Room() {
               key={question.id}
               content={question.content}
               author={question.author}
+              isAnswered={question.isAnswered}
+              isHighlighted={question.isHighlighted}
             >
               <button
                 className={`like-button ${question.likeId ? 'liked' : ''}`}
                 type='button'
                 aria-label='Marcar como gostei'
                 onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                disabled={question.isAnswered}
               >
                 {question.likeCount > 0 && <span>{question.likeCount}</span>}
                 <svg
@@ -132,6 +136,16 @@ export function Room() {
             </Question>
           ))}
         </div>
+
+        {questions.length <= 0 && (
+          <div className='empty-questions'>
+            <img src={emptyQuestionsImg} />
+            <h2>Nenhuma pergunta por aqui...</h2>
+            <p>
+              Faça o seu login e seja a primeira pessoa a fazer uma pergunta!
+            </p>
+          </div>
+        )}
       </main>
     </div>
   );
