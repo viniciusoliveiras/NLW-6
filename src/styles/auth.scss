@@ -23,6 +23,7 @@
       font: 700 2.25rem 'Poppins', sans-serif;
       line-height: 2.625rem;
       margin-top: 1rem;
+      width: 27.5rem;
     }
 
     p {
@@ -31,6 +32,7 @@
       margin-top: 1rem;
       color: #f8f8f8;
       font-weight: 400;
+      width: 28rem;
     }
   }
 
@@ -66,7 +68,7 @@
 
     form {
       input {
-        height: 3.125rem;
+        height: 2.8rem;
         border-radius: 0.5rem;
         padding: 0 1rem;
         background: #fff;
@@ -75,6 +77,7 @@
 
       button {
         margin-top: 1rem;
+        height: 2.8rem;
       }
 
       button,
@@ -99,7 +102,7 @@
   .create-room {
     margin-top: 4rem;
 
-    height: 3.125rem;
+    height: 2.8rem;
 
     border-radius: 0.5rem;
     border: 0;
@@ -147,6 +150,55 @@
       height: 1px;
       background: #a8a8b3;
       margin-left: 1rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    aside {
+      padding: 5.5rem 2.5rem;
+
+      img {
+        width: 290px;
+      }
+
+      strong {
+        font-size: 1.6rem;
+        width: 20rem;
+        line-height: 2.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        width: 20rem;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    height: 100%;
+    flex-direction: column;
+
+    aside {
+      padding: 2rem;
+
+      img {
+        align-self: center;
+        width: 150px;
+      }
+
+      strong {
+        margin-top: 1.2rem;
+        width: 100%;
+      }
+
+      p {
+        width: 100%;
+      }
+    }
+
+    main {
+      margin: 1.5rem 0;
     }
   }
 }
