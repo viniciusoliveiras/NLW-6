@@ -16,7 +16,7 @@ type RoomParams = {
 };
 
 export function Room() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
 
   const params = useParams<RoomParams>();
   const roomID = params.id;
@@ -24,6 +24,14 @@ export function Room() {
   const [newQuestion, setNewQuestion] = useState('');
 
   const { questions, title } = useRoom(roomID);
+
+  async function handleUserLogin() {
+    try {
+      await signInWithGoogle();
+    } catch {
+      toast.error('Não foi possível realizar o login agora');
+    }
+  }
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -103,7 +111,8 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login.</button>
+                Para enviar uma pergunta,{' '}
+                <button onClick={handleUserLogin}>faça seu login.</button>
               </span>
             )}
 

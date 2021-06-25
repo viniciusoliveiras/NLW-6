@@ -6,7 +6,6 @@ import { database } from '../services/firebase';
 import { useRoom } from '../hooks/useRoom';
 import { Question } from '../components/Question';
 import { RoomHeader } from '../components/RoomHeader';
-import deleteImg from '../assets/images/delete.svg';
 import emptyQuestionsImg from '../assets/images/empty-questions.svg';
 import '../styles/room.scss';
 
@@ -68,6 +67,7 @@ export function AdminRoom() {
               key={question.id}
               content={question.content}
               author={question.author}
+              likeCount={question.likeCount}
               isAnswered={question.isAnswered}
               isHighlighted={question.isHighlighted}
             >

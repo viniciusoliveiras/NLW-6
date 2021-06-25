@@ -62,6 +62,27 @@ export function useRoom(roomID: string) {
         }
       );
 
+      parsedQuestions.sort((a, b) => {
+        if (a.likeCount > b.likeCount) {
+          return -1;
+        }
+        return 0;
+      });
+
+      parsedQuestions.sort((a, b) => {
+        if (a.isHighlighted > b.isHighlighted) {
+          return -1;
+        }
+        return 0;
+      });
+
+      parsedQuestions.sort((a, b) => {
+        if (a.isAnswered < b.isAnswered) {
+          return -1;
+        }
+        return 0;
+      });
+
       setTitle(databaseRoom.title);
       setQuestions(parsedQuestions);
     });

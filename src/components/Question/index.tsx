@@ -11,6 +11,7 @@ type QuestionProps = {
   };
   isAnswered?: boolean;
   isHighlighted?: boolean;
+  likeCount?: number;
   children?: ReactNode;
 };
 
@@ -19,6 +20,7 @@ export function Question({
   author,
   isAnswered = false,
   isHighlighted = false,
+  likeCount = 0,
   children,
 }: QuestionProps) {
   return (
@@ -35,6 +37,7 @@ export function Question({
           <img src={author.avatar} alt='Foto do autor' />
           <span>{author.name}</span>
         </div>
+        {likeCount > 0 && <span>{likeCount} like(s)</span>}
         <div>{children}</div>
       </footer>
     </div>

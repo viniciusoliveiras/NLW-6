@@ -20,6 +20,10 @@
   &.answered {
     background: #dbdcdd;
     border: none;
+
+    footer div img {
+      filter: grayscale(0.8);
+    }
   }
 
   p {
@@ -52,6 +56,14 @@
     > div {
       display: flex;
       gap: 1rem;
+    }
+
+    > span {
+      background: #e559f9;
+      border-radius: 10rem;
+      padding: 0.5rem 0.8rem;
+      font-weight: 500;
+      font-size: 0.8rem;
     }
 
     button {
@@ -101,6 +113,11 @@
       &:disabled {
         cursor: not-allowed;
       }
+    }
+
+    @media (max-width: 500px){
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 }
