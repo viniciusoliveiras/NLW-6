@@ -1,8 +1,9 @@
 import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 import logoImg from '../../assets/images/logo.svg';
 import { database } from '../../services/firebase';
 import { Button } from '../Button';
-
 import { RoomCode } from '../RoomCode';
 import './styles.scss';
 
@@ -15,11 +16,17 @@ export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
   const history = useHistory();
 
   async function handleEndRoom() {
-    await database.ref(`rooms/${id}`).update({
-      endedAt: new Date(),
-    });
+    try {
+      if (window.confirm('Tem certeza que você deseja encerrar esta sala?')) {
+        await database.ref(`rooms/${id}`).update({
+          endedAt: new Date(),
+        });
+      }
 
-    history.push('/');
+      history.push('/');
+    } catch {
+      toast.error('Erro ao encerrar a sala. Tente mais tarde');
+    }
   }
 
   return (

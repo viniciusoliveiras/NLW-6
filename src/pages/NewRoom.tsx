@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -22,11 +23,15 @@ export function NewRoom() {
 
     const roomRef = database.ref('rooms');
 
-    const { key } = await roomRef.push({
-      title: newRoom,
-      authorId: user?.id,
-    });
-    history.push(`/admin/rooms/${key}`);
+    try {
+      const { key } = await roomRef.push({
+        title: newRoom,
+        authorId: user?.id,
+      });
+      history.push(`/admin/rooms/${key}`);
+    } catch {
+      toast.error('Tivemos um problema ao criar a sala. Tente mais tarde');
+    }
   }
 
   return (

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import { database } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
@@ -32,22 +33,26 @@ export function Room() {
     }
 
     if (!user) {
-      throw new Error('You must be logged in');
+      toast.error('Você deve estar logado');
     }
 
     const question = {
       content: newQuestion,
       author: {
-        name: user.name,
-        avatar: user.avatar,
+        name: user?.name,
+        avatar: user?.avatar,
       },
       isHighlighted: false,
       isAnswered: false,
     };
 
-    await database.ref(`rooms/${roomID}/questions`).push(question);
+    try {
+      await database.ref(`rooms/${roomID}/questions`).push(question);
 
-    setNewQuestion('');
+      setNewQuestion('');
+    } catch {
+      toast.error('Erro ao enviar a pergunta. Tente mais tarde');
+    }
   }
 
   async function handleLikeQuestion(
@@ -55,13 +60,21 @@ export function Room() {
     likeId: string | undefined
   ) {
     if (likeId) {
-      await database
-        .ref(`rooms/${roomID}/questions/${questionID}/likes/${likeId}`)
-        .remove();
+      try {
+        await database
+          .ref(`rooms/${roomID}/questions/${questionID}/likes/${likeId}`)
+          .remove();
+      } catch {
+        toast.error('Erro ao realizar essa ação. Tente mais tarde');
+      }
     } else {
-      await database
-        .ref(`rooms/${roomID}/questions/${questionID}/likes`)
-        .push({ authorId: user?.id });
+      try {
+        await database
+          .ref(`rooms/${roomID}/questions/${questionID}/likes`)
+          .push({ authorId: user?.id });
+      } catch {
+        toast.error('Erro ao realizar essa ação. Tente mais tarde');
+      }
     }
   }
 

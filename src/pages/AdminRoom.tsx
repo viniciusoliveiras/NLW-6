@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import cx from 'classnames';
 
 import { database } from '../services/firebase';
@@ -20,20 +21,34 @@ export function AdminRoom() {
   const { questions, title } = useRoom(roomID);
 
   async function handleCheckQuestionAsAnswered(questionID: string) {
-    await database.ref(`rooms/${roomID}/questions/${questionID}`).update({
-      isAnswered: true,
-    });
+    try {
+      await database.ref(`rooms/${roomID}/questions/${questionID}`).update({
+        isAnswered: true,
+      });
+    } catch {
+      toast.error('Erro ao realizar essa ação. Tente mais tarde');
+    }
   }
 
   async function handleHighlightQuestion(questionID: string) {
-    await database.ref(`rooms/${roomID}/questions/${questionID}`).update({
-      isHighlighted: true,
-    });
+    try {
+      await database.ref(`rooms/${roomID}/questions/${questionID}`).update({
+        isHighlighted: true,
+      });
+    } catch {
+      toast.error('Erro ao realizar essa ação. Tente mais tarde');
+    }
   }
 
   async function handleDeleteQuestion(questionID: string) {
-    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomID}/questions/${questionID}`).remove();
+    try {
+      if (
+        window.confirm('Tem certeza que você deseja excluir esta pergunta?')
+      ) {
+        await database.ref(`rooms/${roomID}/questions/${questionID}`).remove();
+      }
+    } catch {
+      toast.error('Erro ao realizar essa ação. Tente mais tarde');
     }
   }
 
