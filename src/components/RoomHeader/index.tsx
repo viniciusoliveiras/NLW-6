@@ -25,9 +25,8 @@ export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
         await database.ref(`rooms/${id}`).update({
           endedAt: new Date(),
         });
+        history.push('/');
       }
-
-      history.push('/');
     } catch {
       toast.error('Erro ao encerrar a sala. Tente mais tarde');
     }
