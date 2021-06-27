@@ -20,7 +20,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
 
     return (storedTheme ?? 'light') as Theme;
   });
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('theme', currentTheme);
