@@ -4,6 +4,7 @@
   height: 100vh;
 
   &.dark {
+    height: 100vh;
     background: #2c2c2c;
     color: #dbdcdd;
 
@@ -14,7 +15,8 @@
       }
     }
 
-    main {
+    main p {
+      color: #dbdcdd;
     }
   }
 

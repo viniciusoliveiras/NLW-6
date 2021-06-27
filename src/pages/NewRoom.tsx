@@ -3,14 +3,17 @@ import { Link, useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import illustrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
+import logoLightImg from '../assets/images/logo.svg';
+import logoDarkImg from '../assets/images/logo-dark.svg';
 import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/Button';
 import { database } from '../services/firebase';
 import '../styles/auth.scss';
+import { useTheme } from '../hooks/useTheme';
 
 export function NewRoom() {
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [newRoom, setNewRoom] = useState('');
   const history = useHistory();
 
@@ -35,7 +38,7 @@ export function NewRoom() {
   }
 
   return (
-    <div id='page-auth'>
+    <div id='page-auth' className={theme}>
       <aside>
         <img
           src={illustrationImg}
@@ -49,7 +52,11 @@ export function NewRoom() {
 
       <main>
         <div className='main-content'>
-          <img src={logoImg} alt='Letmeask' />
+          <img
+            src={theme === 'light' ? logoLightImg : logoDarkImg}
+            alt='Letmeask'
+            onClick={toggleTheme}
+          />
           <h2>Crie uma nova sala</h2>
 
           <form onSubmit={handleCreateRoom}>
