@@ -3,11 +3,17 @@
   border-radius: 8px;
   overflow: hidden;
 
+  width: 100%;
+
   background: #fff;
   border: 1px solid #835afd;
   cursor: pointer;
-  
+
   display: flex;
+
+  &.dark {
+    color: #835afd;
+  }
 
   div {
     background: #835afd;
