@@ -3,6 +3,31 @@
   align-items: stretch;
   height: 100vh;
 
+  &.dark {
+    aside {
+      strong,
+      p {
+        color: #29292e;
+      }
+    }
+
+    main p {
+      color: #dbdcdd;
+    }
+
+    .main-content form {
+      input {
+        background: #5a5a5a;
+        border: 0;
+        color: #dbdcdd;
+
+        &::placeholder {
+          color: #dbdcdd;
+        }
+      }
+    }
+  }
+
   aside {
     flex: 7;
 
@@ -58,6 +83,7 @@
 
     > img {
       align-self: center;
+      cursor: pointer;
     }
 
     h2 {
@@ -151,6 +177,10 @@
       background: #a8a8b3;
       margin-left: 1rem;
     }
+  }
+
+  .switcher {
+    margin-top: 2rem;
   }
 
   @media (max-width: 800px) {

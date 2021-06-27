@@ -7,8 +7,16 @@
 body {
   background: #f8f8f8;
   color: #29292e;
+
+  &.dark {
+    background: #2c2c2c;
+    color: #dbdcdd;
+  }
 }
 
-body, input, textarea, button {
+body,
+input,
+textarea,
+button {
   font: 400 1rem 'Roboto', sans-serif;
 }

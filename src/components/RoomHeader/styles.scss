@@ -2,6 +2,12 @@ header {
   padding: 1.5rem;
   border-bottom: 1px solid #ededed;
 
+  &.dark {
+    .content button {
+      background: transparent;
+    }
+  }
+
   .content {
     max-width: 1120px;
     margin: 0 auto;
@@ -16,10 +22,12 @@ header {
 
     > div {
       display: flex;
+      align-items: center;
       gap: 1rem;
 
       button {
-        height: 2.5rem;
+        font-size: 0.875rem;
+        height: 2.8rem;
       }
     }
   }

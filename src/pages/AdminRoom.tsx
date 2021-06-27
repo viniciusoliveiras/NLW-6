@@ -8,6 +8,7 @@ import { Question } from '../components/Question';
 import { RoomHeader } from '../components/RoomHeader';
 import emptyQuestionsImg from '../assets/images/empty-questions.svg';
 import '../styles/room.scss';
+import { useTheme } from '../hooks/useTheme';
 
 type RoomParams = {
   id: string;
@@ -15,6 +16,7 @@ type RoomParams = {
 
 export function AdminRoom() {
   const params = useParams<RoomParams>();
+  const { theme } = useTheme();
   const roomID = params.id;
 
   const { questions, title } = useRoom(roomID);
@@ -55,7 +57,7 @@ export function AdminRoom() {
     <div id='page-room'>
       <RoomHeader id={roomID} adminRoom />
 
-      <main>
+      <main className={theme}>
         <div className='room-title'>
           <h1>Sala {title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
