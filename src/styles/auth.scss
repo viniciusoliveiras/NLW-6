@@ -3,6 +3,21 @@
   align-items: stretch;
   height: 100vh;
 
+  &.dark {
+    background: #2c2c2c;
+    color: #dbdcdd;
+
+    aside {
+      strong,
+      p {
+        color: #29292e;
+      }
+    }
+
+    main {
+    }
+  }
+
   aside {
     flex: 7;
 
@@ -58,6 +73,7 @@
 
     > img {
       align-self: center;
+      cursor: pointer;
     }
 
     h2 {
