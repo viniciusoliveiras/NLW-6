@@ -10,6 +10,7 @@ import { Question } from '../components/Question';
 import { RoomHeader } from '../components/RoomHeader';
 import emptyQuestionsImg from '../assets/images/empty-questions.svg';
 import '../styles/room.scss';
+import { useTheme } from '../hooks/useTheme';
 
 type RoomParams = {
   id: string;
@@ -17,6 +18,7 @@ type RoomParams = {
 
 export function Room() {
   const { user, signInWithGoogle } = useAuth();
+  const { theme } = useTheme();
 
   const params = useParams<RoomParams>();
   const roomID = params.id;
@@ -90,7 +92,7 @@ export function Room() {
     <div id='page-room'>
       <RoomHeader id={roomID} />
 
-      <main>
+      <main className={theme}>
         <div className='room-title'>
           <h1>Sala {title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}

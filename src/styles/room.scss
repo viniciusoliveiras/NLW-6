@@ -1,9 +1,41 @@
 #page-room {
+  &.dark {
+    .room-title {
+      h2 {
+        color: #dbdcdd;
+      }
+    }
+  }
   main {
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 1rem;
     padding: 0 2%;
+
+    &.dark {
+      .room-title h1 {
+        color: #dbdcdd;
+      }
+
+      form {
+        .form-footer {
+          .user-info span,
+          > span {
+            color: #f8f8f8;
+          }
+        }
+      }
+
+      .empty-questions {
+        h2 {
+          color: #f8f8f8;
+        }
+
+        p {
+          color: #dbdcdd;
+        }
+      }
+    }
 
     .room-title {
       margin: 2rem 0 1.5rem;
