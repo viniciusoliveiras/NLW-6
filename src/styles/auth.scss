@@ -14,6 +14,17 @@
     main p {
       color: #dbdcdd;
     }
+
+    .main-content form {
+      input {
+        background: #5a5a5a;
+        border: 0;
+
+        &::placeholder {
+          color: #dbdcdd;
+        }
+      }
+    }
   }
 
   aside {
@@ -165,6 +176,10 @@
       background: #a8a8b3;
       margin-left: 1rem;
     }
+  }
+
+  .switcher {
+    margin-top: 2rem;
   }
 
   @media (max-width: 800px) {

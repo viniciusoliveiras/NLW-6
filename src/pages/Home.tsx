@@ -12,18 +12,13 @@ import '../styles/auth.scss';
 import { FormEvent } from 'react';
 import { database } from '../services/firebase';
 import { useTheme } from '../hooks/useTheme';
+import { ThemeSwitch } from '../components/ThemeSwitch';
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [roomCode, setRoomCode] = useState('');
-
-  useEffect(() => {
-    toast('Clique na logo caso queria alterar o tema', {
-      duration: 3000,
-    });
-  }, []);
 
   async function handleCreateRoom() {
     if (!user) {
@@ -86,12 +81,16 @@ export function Home() {
           <form onSubmit={joinRoom}>
             <input
               type='text'
-              placeholder='Digite o código da sala'
+              placeholder='Código da sala'
               onChange={(event) => setRoomCode(event.target.value)}
             />
 
             <Button type='submit'>Entrar na sala</Button>
           </form>
+
+          <div className='switcher'>
+            <ThemeSwitch />
+          </div>
         </div>
       </main>
     </div>

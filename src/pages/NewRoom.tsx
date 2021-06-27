@@ -10,6 +10,7 @@ import { Button } from '../components/Button';
 import { database } from '../services/firebase';
 import '../styles/auth.scss';
 import { useTheme } from '../hooks/useTheme';
+import { ThemeSwitch } from '../components/ThemeSwitch';
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -73,6 +74,10 @@ export function NewRoom() {
             Quer entrar em uma sala já existente?{' '}
             <Link to='/'>Clique aqui</Link>
           </p>
+
+          <div className='switcher'>
+            <ThemeSwitch />
+          </div>
         </div>
       </main>
     </div>
