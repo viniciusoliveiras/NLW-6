@@ -8,6 +8,7 @@ type ThemeContextProviderProps = {
 
 type ThemeContextType = {
   theme: Theme;
+  checked: boolean;
   toggleTheme: () => void;
 };
 
@@ -19,6 +20,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
 
     return (storedTheme ?? 'light') as Theme;
   });
+  const [checked, setChecked] = useState(true);
 
   useEffect(() => {
     localStorage.setItem('theme', currentTheme);
@@ -28,10 +30,13 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
 
   function toggleTheme() {
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+    setChecked(!checked);
   }
 
   return (
-    <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ theme: currentTheme, toggleTheme, checked }}
+    >
       {children}
     </ThemeContext.Provider>
   );

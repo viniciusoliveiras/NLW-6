@@ -1,11 +1,14 @@
 import { useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import logoImg from '../../assets/images/logo.svg';
+import logoLightImg from '../../assets/images/logo.svg';
+import logoDarkImg from '../../assets/images/logo-dark.svg';
 import { database } from '../../services/firebase';
 import { Button } from '../Button';
 import { RoomCode } from '../RoomCode';
 import './styles.scss';
+import { useTheme } from '../../hooks/useTheme';
+import { ThemeSwitch } from '../ThemeSwitch';
 
 type RoomHeaderProps = {
   id: string;
@@ -14,6 +17,7 @@ type RoomHeaderProps = {
 
 export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
   const history = useHistory();
+  const { theme } = useTheme();
 
   async function handleEndRoom() {
     try {
@@ -30,9 +34,13 @@ export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
   }
 
   return (
-    <header>
+    <header className={theme}>
       <div className='content'>
-        <img src={logoImg} alt='letmeask' onClick={() => history.push('/')} />
+        <img
+          src={theme === 'light' ? logoLightImg : logoDarkImg}
+          alt='letmeask'
+          onClick={() => history.push('/')}
+        />
         <div>
           <RoomCode code={id} />
           {adminRoom && (
@@ -40,6 +48,7 @@ export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
               Encerrar sala
             </Button>
           )}
+          <ThemeSwitch />
         </div>
       </div>
     </header>
