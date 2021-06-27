@@ -30,7 +30,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
 
   function toggleTheme() {
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
-    setChecked(!checked);
+    setChecked(currentTheme === 'light' ? true : false);
   }
 
   return (

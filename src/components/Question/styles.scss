@@ -23,7 +23,7 @@
     &.answered {
       background: #818181;
       border: none;
-  
+
       footer div img {
         filter: grayscale(0.8);
       }
@@ -34,10 +34,15 @@
         color: #dbdcdd;
       }
 
-      button svg {
-        path,
-        circle {
-          stroke: #dbdcdd;
+      button {
+        svg {
+          path,
+          circle {
+            stroke: #dbdcdd;
+          }
+        }
+        span {
+          color: #835afd;
         }
       }
     }
