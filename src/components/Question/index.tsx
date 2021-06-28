@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import cx from 'classnames';
+import { ReactNode } from 'react';
 
 import './styles.scss';
 import { useTheme } from '../../hooks/useTheme';
@@ -37,8 +37,8 @@ export function Question({
     >
       <p>{content}</p>
       <footer>
-        <div className='user-info'>
-          <img src={author.avatar} alt='Foto do autor' />
+        <div className="user-info">
+          <img src={author.avatar} alt="Foto do autor" />
           <span>{author.name}</span>
         </div>
         {likeCount > 0 && <span>{likeCount} like(s)</span>}

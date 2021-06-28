@@ -1,5 +1,5 @@
-import Switch from 'react-switch';
 import { RiMoonLine, RiSunLine } from 'react-icons/ri';
+import Switch from 'react-switch';
 
 import { useTheme } from '../hooks/useTheme';
 
@@ -9,8 +9,8 @@ export function ThemeSwitch() {
     <Switch
       onChange={toggleTheme}
       checked={checked}
-      offColor='#FFC107'
-      onColor='#835AFD'
+      offColor="#FFC107"
+      onColor="#835AFD"
       uncheckedIcon={
         <div
           style={{
@@ -25,7 +25,7 @@ export function ThemeSwitch() {
             color: '#000',
           }}
         >
-          <RiSunLine fontSize='1.1rem' />
+          <RiSunLine fontSize="1.1rem" />
         </div>
       }
       checkedIcon={
@@ -41,7 +41,7 @@ export function ThemeSwitch() {
             transition: 'opacity 0.25s ease 0s',
           }}
         >
-          <RiMoonLine fontSize='1.1rem' />
+          <RiMoonLine fontSize="1.1rem" />
         </div>
       }
     />

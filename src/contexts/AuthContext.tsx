@@ -23,9 +23,9 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        const { displayName, photoURL, uid } = user;
+    const unsubscribe = auth.onAuthStateChanged(subUser => {
+      if (subUser) {
+        const { displayName, photoURL, uid } = subUser;
 
         if (!displayName || !photoURL) {
           throw new Error('Missing information from Google Account');

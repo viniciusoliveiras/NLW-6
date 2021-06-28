@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import toast from 'react-hot-toast';
-
-import illustrationImg from '../assets/images/illustration.svg';
-import logoLightImg from '../assets/images/logo.svg';
-import logoDarkImg from '../assets/images/logo-dark.svg';
-import googleIconImg from '../assets/images/google-icon.svg';
-import { useAuth } from '../hooks/useAuth';
-import { Button } from '../components/Button';
-import '../styles/auth.scss';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useState } from 'react';
 import { FormEvent } from 'react';
-import { database } from '../services/firebase';
-import { useTheme } from '../hooks/useTheme';
+import toast from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
+
+import googleIconImg from '../assets/images/google-icon.svg';
+import illustrationImg from '../assets/images/illustration.svg';
+import logoDarkImg from '../assets/images/logo-dark.svg';
+import logoLightImg from '../assets/images/logo.svg';
+import { Button } from '../components/Button';
 import { ThemeSwitch } from '../components/ThemeSwitch';
+import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
+import { database } from '../services/firebase';
+
+import '../styles/auth.scss';
 
 export function Home() {
   const history = useHistory();
@@ -51,11 +54,11 @@ export function Home() {
   }
 
   return (
-    <div id='page-auth' className={theme}>
+    <div id="page-auth" className={theme}>
       <aside>
         <img
           src={illustrationImg}
-          alt='Ilustração simbolizando perguntas e respostas'
+          alt="Ilustração simbolizando perguntas e respostas"
         />
 
         <strong>Toda pergunta tem uma resposta.</strong>
@@ -64,31 +67,35 @@ export function Home() {
       </aside>
 
       <main>
-        <div className='main-content'>
+        <div className="main-content">
           <img
             src={theme === 'light' ? logoLightImg : logoDarkImg}
-            alt='Letmeask'
+            alt="Letmeask"
             onClick={toggleTheme}
           />
 
-          <button className='create-room' onClick={handleCreateRoom}>
-            <img src={googleIconImg} alt='Google Logo' />
+          <button
+            type="button"
+            className="create-room"
+            onClick={handleCreateRoom}
+          >
+            <img src={googleIconImg} alt="Google Logo" />
             Crie sua sala com o Google
           </button>
 
-          <div className='separator'>ou entre em uma sala</div>
+          <div className="separator">ou entre em uma sala</div>
 
           <form onSubmit={joinRoom}>
             <input
-              type='text'
-              placeholder='Código da sala'
-              onChange={(event) => setRoomCode(event.target.value)}
+              type="text"
+              placeholder="Código da sala"
+              onChange={event => setRoomCode(event.target.value)}
             />
 
-            <Button type='submit'>Entrar na sala</Button>
+            <Button type="submit">Entrar na sala</Button>
           </form>
 
-          <div className='switcher'>
+          <div className="switcher">
             <ThemeSwitch />
           </div>
         </div>

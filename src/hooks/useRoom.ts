@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { database } from '../services/firebase';
 import { useAuth } from './useAuth';
 
@@ -42,7 +43,7 @@ export function useRoom(roomID: string) {
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomID}`);
 
-    roomRef.on('value', (room) => {
+    roomRef.on('value', room => {
       const databaseRoom = room.val();
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
 
@@ -56,7 +57,7 @@ export function useRoom(roomID: string) {
             isHighlighted: value.isHighlighted,
             likeCount: Object.values(value.likes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
-              ([key, like]) => like.authorId === user?.id
+              ([id, like]) => like.authorId === user?.id
             )?.[0],
           };
         }

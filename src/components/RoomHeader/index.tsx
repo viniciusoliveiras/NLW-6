@@ -1,13 +1,16 @@
-import { useHistory } from 'react-router-dom';
+/* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import toast from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 
-import logoLightImg from '../../assets/images/logo.svg';
 import logoDarkImg from '../../assets/images/logo-dark.svg';
+import logoLightImg from '../../assets/images/logo.svg';
+import { useTheme } from '../../hooks/useTheme';
 import { database } from '../../services/firebase';
 import { Button } from '../Button';
 import { RoomCode } from '../RoomCode';
 import './styles.scss';
-import { useTheme } from '../../hooks/useTheme';
 import { ThemeSwitch } from '../ThemeSwitch';
 
 type RoomHeaderProps = {
@@ -34,10 +37,10 @@ export function RoomHeader({ id, adminRoom = false }: RoomHeaderProps) {
 
   return (
     <header className={theme}>
-      <div className='content'>
+      <div className="content">
         <img
           src={theme === 'light' ? logoLightImg : logoDarkImg}
-          alt='letmeask'
+          alt="letmeask"
           onClick={() => history.push('/')}
         />
         <div>

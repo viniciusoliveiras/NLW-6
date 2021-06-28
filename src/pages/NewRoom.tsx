@@ -1,16 +1,18 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { FormEvent, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Link, useHistory } from 'react-router-dom';
 
 import illustrationImg from '../assets/images/illustration.svg';
-import logoLightImg from '../assets/images/logo.svg';
 import logoDarkImg from '../assets/images/logo-dark.svg';
-import { useAuth } from '../hooks/useAuth';
+import logoLightImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
+import { ThemeSwitch } from '../components/ThemeSwitch';
+import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 import { database } from '../services/firebase';
 import '../styles/auth.scss';
-import { useTheme } from '../hooks/useTheme';
-import { ThemeSwitch } from '../components/ThemeSwitch';
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -39,11 +41,11 @@ export function NewRoom() {
   }
 
   return (
-    <div id='page-auth' className={theme}>
+    <div id="page-auth" className={theme}>
       <aside>
         <img
           src={illustrationImg}
-          alt='Ilustração simbolizando perguntas e respostas'
+          alt="Ilustração simbolizando perguntas e respostas"
         />
 
         <strong>Toda pergunta tem uma resposta.</strong>
@@ -52,30 +54,30 @@ export function NewRoom() {
       </aside>
 
       <main>
-        <div className='main-content'>
+        <div className="main-content">
           <img
             src={theme === 'light' ? logoLightImg : logoDarkImg}
-            alt='Letmeask'
+            alt="Letmeask"
             onClick={toggleTheme}
           />
           <h2>Crie uma nova sala</h2>
 
           <form onSubmit={handleCreateRoom}>
             <input
-              type='text'
-              placeholder='Nome da sala'
-              onChange={(event) => setNewRoom(event.target.value)}
+              type="text"
+              placeholder="Nome da sala"
+              onChange={event => setNewRoom(event.target.value)}
             />
 
-            <Button type='submit'>Criar sala</Button>
+            <Button type="submit">Criar sala</Button>
           </form>
 
           <p>
             Quer entrar em uma sala já existente?{' '}
-            <Link to='/'>Clique aqui</Link>
+            <Link to="/">Clique aqui</Link>
           </p>
 
-          <div className='switcher'>
+          <div className="switcher">
             <ThemeSwitch />
           </div>
         </div>
