@@ -1,5 +1,6 @@
-import cx from 'classnames';
 import { ReactNode } from 'react';
+
+import cx from 'classnames';
 
 import './styles.scss';
 import { useTheme } from '../../hooks/useTheme';

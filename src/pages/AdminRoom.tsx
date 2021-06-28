@@ -1,7 +1,9 @@
 /* eslint-disable no-alert */
-import cx from 'classnames';
+
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+
+import cx from 'classnames';
 
 import emptyQuestionsImg from '../assets/images/empty-questions.svg';
 import { Question } from '../components/Question';
